@@ -1,5 +1,4 @@
 *.ds[sdkc]
-*.csv
 *.doc*
 *.h5
 *.dump

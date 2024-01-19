@@ -31,20 +31,20 @@ def collate_calsim_inputs_for_ann(dssfile):
     ------
     returns a dataframe with named feature columns
     '''
-    sac = add_pathnames(dssfile, ['/CALSIM-SMOOTH/C_SAC048/FLOW//1DAY/L2020A_DCP_EX/',
+    sac = add_pathnames(dssfile, ['/CALSIM-SMOOTH/C_SAC048/FLOW//1DAY/L2020A_1EX_DEC_CLOSED/',
                                   '/CALSIM/C_CSL004A/CHANNEL//1MON/L2020A/',
-                                  '/CALSIM/C_CLV004/FLOW/01JAN1920/1MON/L2020A_DCP_EX/',
+                                  '/CALSIM/C_CLV004/CHANNEL//1MON/L2020A/',
                                   '/CALSIM/C_MOK019/CHANNEL//1MON/L2020A/'])
-    exports = add_pathnames(dssfile, ['/CALSIM/C_CAA003_TD/FLOW//1MON/L2020A_DCP_EX/',
-                                      '/CALSIM/C_DMC000_TD/FLOW//1MON/L2020A_DCP_EX/',
-                                      '/CALSIM/D408/FLOW//1MON/L2020A_DCP_EX/',
-                                      '/CALSIM/D_SJR028_WTPDWS/FLOW//1MON/L2020A_DCP_EX/'])
+    exports = add_pathnames(dssfile, ['/CALSIM/C_CAA003_TD/FLOW-DELIVERY//1MON/L2020A/',
+                                      '/CALSIM/C_DMC000_TD/FLOW-DELIVERY//1MON/L2020A/',
+                                      '/CALSIM/D408/FLOW-DELIVERY//1MON/L2020A/',
+                                      '/CALSIM/D_SJR028_WTPDWS/DIVERSION//1MON/L2020A/'])
     dcc=add_pathnames(dssfile, ['/CALSIM/DXC/GATE-DAYS-OPEN//1MON/L2020A/'])
     net_dcd=add_pathnames(dssfile, ['/CALSIM/NET_DICU/DICU_FLOW//1MON/L2020A/'])
-    sjr = add_pathnames(dssfile, ['/CALSIM-SMOOTH/C_SJR070/FLOW//1DAY/L2020A_DCP_EX/'])
+    sjr = add_pathnames(dssfile, ['/CALSIM-SMOOTH/C_SJR070/FLOW//1DAY/L2020A_1EX_DEC_CLOSED/'])
     tide = add_pathnames(dssfile, ['/DWR/SAN_FRANCISCO/STAGE-MAX-MIN//1DAY/ASTRO_NAVD_20170607/'])
-    smscg = add_pathnames(dssfile, ['/MONTEZUMA/SMSCG/GATE-OPERATE//1DAY/DCP_EX/'])
-    df=pd.concat([sac,exports,dcc,net_dcd,sjr,tide,smscg],axis=1,join='inner')
-    df.columns=['sac','exports','dcc','net_dcd','sjr','tide','smscg']
+    smscg = add_pathnames(dssfile, ['/CALSIM/SMSCG_OP/GATE-OP-RATIO//1DAY/L2020A_1EX_DEC_CLOSED/'])
+    df=pd.concat([dcc,exports,sac,sjr,tide,net_dcd,smscg],axis=1,join='inner')
+    df.columns=['dcc','exports','sac','sjr','tide','net_dcd','smscg']
     return df
 

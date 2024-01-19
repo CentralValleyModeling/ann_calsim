@@ -1,17 +1,17 @@
-name: anntraining
+name: ann_mock_run
 channels:
 #  - pyviz
   - defaults
   - conda-forge
 dependencies:
   #basics
-  - python
+  - python==3.10.9
   #jupyter
   - ipykernel
   # dev
   - autopep8
   # scientific core
-  - numpy=1.19.2 # issue with https://github.com/tensorflow/tensorflow/issues/47242
+  - numpy == 1.23.5 #numpy=1.19.2 # issue with https://github.com/tensorflow/tensorflow/issues/47242
   - pandas
   # windows io
   - xlrd # >= 1.0.0

@@ -1,0 +1,15 @@
+emm_scale = 0.00014203,      emm_OFFSET = 0.07569127  
+jpt_scale = 0.00023080,      jpt_OFFSET = 0.06699015   
+orrsl_scale = 0.00057239,    orrsl_OFFSET = 0.03811252  
+antioch_scale = 0.00008527, antioch_OFFSET = 0.08754056  
+collins_scale = 0.00005569, collins_OFFSET = 0.09070051 
+mallard_scale = 0.00004434, mallard_OFFSET = 0.09274145  
+losvaqueros_scale = 0.00065188, losvaqueros_OFFSET = 0.03406080 
+middleriver_scale = 0.00084822, middleriver_OFFSET = 0.00594213 
+VICTintake_scale  = 0.00083096, VICTintake_OFFSET = 0.01786704 
+CVPintake_scale  = 0.00080051, CVPintake_OFFSET =0.02052120
+CCFBintake_scale = 0.00076145, CCFBintake_OFFSET = 0.02600466 
+beldan_scale = 0.00004580, beldan_offset = 0.09186807
+MTZ_scale = 0.00002931, MTZ_offset = 0.08635848 
+
+x2_scale = 0.01643762, X2_OFFSET = -0.68678404 

@@ -10,18 +10,18 @@ module ann
        
     !Input scaling factors: x2 ANN will have a different input scaling                       
     real ::     DXC_SCALE = 0.80000000,   DXC_OFFSET = 0.10000000
-    real ::     EXP_SCALE = 0.0000607728,   EXP_OFFSET = 0.0433944584
-    real ::     SAC_SCALE = 0.0000032087,   SAC_OFFSET = 0.0850303475
-    real ::     SJR_SCALE = 0.0000152175,   SJR_OFFSET = 0.0917934378
-    real ::     SFtide_SCALE = 0.1326765781, SFtide_OFFSET = -0.3144152744
-    real ::     DICU_SCALE = 0.0000983076, DICU_OFFSET = 0.5882375049
+    real ::     EXP_SCALE = 0.00005889,   EXP_OFFSET = 0.03190512
+    real ::     SAC_SCALE = 0.00000323,   SAC_OFFSET = 0.08227147
+    real ::     SJR_SCALE = 0.00001535,   SJR_OFFSET = 0.09418556
+    real ::     SFtide_SCALE = 0.13309598, SFtide_OFFSET = -0.31825414
+    real ::     DICU_SCALE = 0.00009980, DICU_OFFSET = 0.59548727
     real ::     VernEC_SCALE = 0.80000000, VernEC_OFFSET = 0.10000000 
     
 
     !Output scaling factors
     real ::        jpt_scale = 0.0001929649,      jpt_OFFSET = 0.0997773990  ! 
     real ::      orrsl_scale = 0.0004732648,    orrsl_OFFSET = 0.0972065139 ! 
-    real ::        emm_scale = 0.0001293309,      emm_OFFSET = 0.0999479380 ! 
+    real ::        emm_scale = 0.00014203,      emm_OFFSET = 0.07569127 ! 
     real ::    antioch_scale = 0.0000764044, antioch_OFFSET = 0.0999732317 ! 
     real ::    collins_scale = 0.0000532276, collins_OFFSET = 0.0998880025 ! 
     real ::    mallard_scale = 0.00004434, mallard_OFFSET = 0.09274145  !

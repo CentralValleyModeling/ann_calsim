@@ -1,9 +1,0 @@
-Input Scaling factors:
-
-deltacc: a=0.80000000; b=  0.10000000;
-exports: a=0.00005889; b=  0.03190512;
-sacflow: a=0.00000323; b=  0.08227147;
-sjrflow: a=0.00001535; b=  0.09418556;
-SF_Astro_PlanningTide: a=0.13309598; b= -0.31825414;
-dicu: a=0.00009980; b=  0.59548727;
-SMSCG_OP: a=0.80000000; b=  0.10000000;

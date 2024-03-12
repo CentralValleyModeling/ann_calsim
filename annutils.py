@@ -49,10 +49,10 @@ def split(df, calib_slice, valid_slice):
     return df[calib_slice], df[valid_slice]
 
 def create_xyscaler(dfin,dfout):
-    xscaler=MinMaxScaler(feature_range=(0.1, 0.9))
+    xscaler=MinMaxScaler()
     xx=xscaler.fit_transform(dfin)
     #
-    yscaler=MinMaxScaler(feature_range=(0.1, 0.9))
+    yscaler=MinMaxScaler()
     yy=yscaler.fit_transform(dfout)
     return xscaler, yscaler
 
@@ -184,9 +184,9 @@ def show(df_x, df_y, mlp, xs, ys):
                      hv.Curve((df_y.index,y_pred),label='prediction')*hv.Curve((df_y.index,y),label='target').opts(width=800))
 
 def train(df_x,df_y,hidden_layer_sizes=(10,),max_iter=1000,activation='relu',tol=1e-4):
-    xs=MinMaxScaler(feature_range=(0.1, 0.9))
+    xs=MinMaxScaler()
     x=xs.fit_transform(df_x)
-    ys=MinMaxScaler(feature_range=(0.1, 0.9))
+    ys=MinMaxScaler()
     y=np.ravel(ys.fit_transform(df_y))
     mlp=train_nn(x, y,hidden_layer_sizes=hidden_layer_sizes,max_iter=max_iter,activation=activation,tol=tol)
     return mlp, xs, ys
@@ -197,3 +197,14 @@ def train_more(mlp,xs,ys,df_x,df_y):
     mlp.fit(x,y)
     return mlp
 
+def predict_r(model, dfx, xscaler, yscaler):
+    dfx_scaled = pd.DataFrame(xscaler.transform(dfx), dfx.index, columns=dfx.columns)
+    xx = create_antecedent_inputs(dfx_scaled)
+    yyp_scaled = model.predict(xx)
+    yyp_unscaled = yscaler.inverse_transform(yyp_scaled)
+    dfp_scaled = pd.DataFrame(yyp_scaled, index=xx.index, columns=['prediction_scaled'])
+    dfp_unscaled = pd.DataFrame(yyp_unscaled, index=xx.index, columns=['prediction_unscaled'])
+    return pd.concat([dfp_scaled, dfp_unscaled], axis=1)
+def predict_with_actual_r(model, dfx, dfy, xscaler, yscaler):
+    dfp = predict(model, dfx, xscaler, yscaler)
+    return pd.concat([dfy, dfp], axis=1).dropna()

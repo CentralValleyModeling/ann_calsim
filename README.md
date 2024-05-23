@@ -34,6 +34,6 @@ The repo contains jupyter notebooks and python code in two files. The starting p
 
 * Preprocessing. The [read_calsim_and_collate_inputs.ipynb](read_calsim_and_collate_inputs.ipynb) takes the .dss files and creates input and output csv files
 * Training and Testing. The [ann_smscg_ff_calsim3_style.ipynb](ann_smscg_ff_calsim3_style.ipynb) uses the csv files and builds, trains, saves and tests the neural network
-* Optimization Sample. The [sample_water_cost_with_ann.ipynb](sample_water_cost_with_ann.ipynb) uses the trained ann to be used on a sample water cost optimization problem
+
 
 

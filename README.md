@@ -24,7 +24,11 @@ Next, follow the instructions below
 
 ## Input Dataset
 
-Download the training dataset from here:
+Download the training dataset for 30cm Sea Level Rise Scenario here:
+
+| Study Scenario | Model      | File |
+|------------------|:--------------:|:----------:|
+|Existing        |CS3| [1](https://cadwr.box.com/s/5uia874mrcimrjngdm0t4yxajw52xd6e) |
 
 
 ## Running

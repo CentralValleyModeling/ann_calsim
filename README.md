@@ -9,11 +9,23 @@ Nimal C. Jayasundara, et al. [Artificial Neural Network for Sacramento–San Joa
 ## Setup
 To try it on the cloud (mybinder.org) simply use [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/dwr-psandhu/ann_calsim/HEAD). 
 
-To setup a local enviornment, first download miniconda3 and then create an environment based on [environment.yml](environment.yml) file
+To setup a local enviornment, first download miniconda3.
+
+For preprocessing, create an environment based on [preprocess_environment.yml](environment.yml) file
+```
+conda env create -f preprocess_environment.yml
+```
+
+For ANN training, create an environment based on [environment.yml](environment.yml) file
 ```
 conda env create -f environment.yml
 ```
-Now you follow the instructions below
+Next, follow the instructions below
+
+## Input Dataset
+
+Download the training dataset from here:
+
 
 ## Running
 

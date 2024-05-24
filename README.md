@@ -20,7 +20,7 @@ For ANN training, create an environment based on [environment.yml](environment.y
 ```
 conda env create -f environment.yml
 ```
-Next, follow the instructions below
+Next, follow the instructions below to train ANN for 30cm Sea Level Rise Scenario.
 
 ## Input Dataset
 

@@ -321,7 +321,7 @@ contains
         
 	
         EXP_scale = 0.0000023702;   EXP_OFFSET = 0.09430397;
-		SAC_SCALE = 0.80000000; SAC_OFFSET = 0.10000000;    ! X2_31day_prv
+	SAC_SCALE = 0.80000000; SAC_OFFSET = 0.10000000;    ! X2_31day_prv
 	   
     end if
     !end of add         

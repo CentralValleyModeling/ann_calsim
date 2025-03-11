@@ -1,48 +1,80 @@
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/dwr-psandhu/ann_calsim/HEAD)
-# Python based ANN for CALSIM
+# CalSim-ANN
+## Introduction
+This repository contains the scripts to train and test the models described in the paper "[EnhancedArtificial Neural Networks for Salinity Estimation and Forecasting in the Sacramento-San Joaquin Delta of California](https://ascelibrary.org/doi/full/10.1061/%28ASCE%29WR.1943-5452.0001445?casa_token=05VRObBIFRUAAAAA%3AmmX4MFaWkY6ZTf__OXanBzi4gjmMXunXXgKdLBPzEMEXx7zdXCHdP5Kye4c1CQRHGBIEEivB)".
 
-This repo uses Python and Keras frameworks to build, train and test a neural network based on the paper. 
+These multi-variate Dense Neural Networks are designed to predict salinity at Sacramento-San Joaquin Delta. Two architectures are provided in both MATLAB and Python: single-output (STL) ANNs and multi-output (MTL) ANNs. And an enhanced ANN architecture, MTL ANN with a convolutional pre-processing layer, is available in Python.
 
-Nimal C. Jayasundara, et al. [Artificial Neural Network for Sacramento–San JoaquinDelta Flow–Salinity Relationship for CalSim 3.0](https://ascelibrary.org/doi/10.1061/%28ASCE%29WR.1943-5452.0001192)
+### Citation
+If you use these models in your research, please cite:
 
-
-## Setup
-To try it on the cloud (mybinder.org) simply use [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/dwr-psandhu/ann_calsim/HEAD). 
-
-To setup a local enviornment, first download miniconda3.
-
-For preprocessing, create an environment based on [preprocess_environment.yml](preprocess_environment.yaml) file
-```
-conda env create -f preprocess_environment.yml
-```
-
-For ANN training, create an environment based on [environment.yml](environment.yml) file
-```
-conda env create -f environment.yml
-```
-Next, follow the instructions below to train ANN for 30cm Sea Level Rise Scenario.
-
-## Input Dataset
-
-Download the training dataset for 30cm Sea Level Rise Scenario here:
-
-| Study Scenario | Model      | File |
-|------------------|:--------------:|:----------:|
-|Existing        |CS3| [1](https://cadwr.box.com/s/5uia874mrcimrjngdm0t4yxajw52xd6e), [2](https://cadwr.box.com/s/km9uo19j3b2rpv3oavzr3gv36pca9u7n), [3](https://cadwr.box.com/s/vqopiss446y04bo4yw60nq7khwks6mfg) |
-|Existing        |DSM2| [1](https://cadwr.box.com/s/tmdt6b9qr31h78is7kolylb42wahlaqc), [2](https://cadwr.box.com/s/rr2778cdlad4254isb1kjq0vnemzvgj5) |
-|SMSCG        |CS3| [1](https://cadwr.box.com/s/z7io6720qi69bb1xvrtyk3n0g7kb2gce), [2](https://cadwr.box.com/s/xtu3o37ar016mokjq37xvv6d47syba9n), [3](https://cadwr.box.com/s/voaugx36d4kwvvtlcpu2af2y2lybfpjz) |
-|SMSCG        |DSM2| [1](https://cadwr.box.com/s/7karo6zz6y0jvfdrcliqlmyyna1fb329), [2](https://cadwr.box.com/s/h8gkuhc1l7slukq9wpjzkvvc6npigqod) |
-|PA6K        |CS3| [1](https://cadwr.box.com/s/aa3bp77o6jk40kgr3aty9it0xcbfprty), [2](https://cadwr.box.com/s/q0hgpwtawloeo0whzt4x6dlyeuy9dky4), [3](https://cadwr.box.com/s/t1ra0sazamcmxboxs5b6v355tyt0k4wu) |
-|PA6K        |DSM2| [1](https://cadwr.box.com/s/dm47ufdjksyzk5ms1c6iaqlry1an5m0b), [2](https://cadwr.box.com/s/vkl5d8ed0aqwk3rrfdvhktfun029ye4e) |
+    @article{qi2021enhanced,
+      title={Enhanced Artificial Neural Networks for Salinity Estimation and Forecasting in the Sacramento-San Joaquin Delta of California},
+      author={Qi, Siyu and Bai, Zhaojun and Ding, Zhi and Jayasundara, Nimal and He, Minxue and Sandhu, Prabhjot and Seneviratne, Sanjaya and Kadir, Tariq},
+      journal={Journal of Water Resources Planning and Management},
+      volume={147},
+      number={10},
+      pages={04021069},
+      year={2021},
+      publisher={American Society of Civil Engineers}
+    }
 
 
-## Running
+## What's in this repo
+*  Code to train and test ANNs in both MATLAB and Python.
+*  Training and test data in "ANN_data.xlsx".
 
-The repo contains jupyter notebooks and python code in two files. The starting point for input preprocessing are DSS files from one or mor runs of CALSIM based DSM2 studies.
+## Dataset format
+To train the ANN with your own data, you have to prepare your own dataset that satisfies the following requirements.
+1. Data must be in excel format;
+2. Each row should be the time series/outputs for one day;
+3. Put input data in the first sheet and output data in the second;
+4. Date/time can either be included as the first column or be not included, but in both cases, it will be ignored.
+5. Days with empty entries will be deleted automatically.
 
 
-* Preprocessing. The [preprocessing notebook for 30cm SLR](read_calsim_and_collate_inputs_upd_dcr30cm_x2.ipynb) takes the .dss files and creates input and output csv files
-* Training and Testing. The [ANN training notebook](TF_EC_X2_training_DCR30cmSLR.ipynb) uses the csv files and builds, trains, saves and tests the neural network
+## How to run in MATLAB
+### Requirements
+* MATLAB 2019(a) or higher
+* MATLAB Deep Learning Toolbox
+
+### Introduction
+The MATLAB scripts can read data from xlsx files, normalize data and train ANNs.
+
+There are two different ANN architectures:
+
+1. Train one ANN for each station respectively.
+Each ANN contains two hidden layers with 8 and 2 neurons, followed by an output layer with 1 neuron.
+Results will be written into the folder: network/$ANNsetting$/$station$, where $ANNsetting$ refers to the variable "ANNsetting" in "trainANNs_single_output.m" or "trainANN_multi_output.m", and $station$ is the abbreviation of the station, for example: network/0.1-0.9-8-2-1-80%-MEM-7-10-11/JP
+
+2. Train one integrated ANN on multiple selected outputs and this single ANN predicts more than 1 values at a time.
+The ANN contains two hidden layers with 32 and 8 neurons (can be modified), followed by an output layer with 4 neurons.
+Results will be written into the folder: network/$ANNsetting$/$station$, where $ANNsetting$ refers to the variable "ANNsetting" in "trainANNs_single_output.m" or "trainANN_multi_output.m" and $station$ is the concatenated name of stations, for example: network/4_output_ANN-0.1-0.9-8-2-1-80%-MEM-7-10-11/CO_EMM_JP_ORRSL
 
 
+### Usage
+For more detailed instruction, please refer to "matlab_tutorial.pdf".
 
+To train ANNs on the given dataset, simply do the following:
+  1. Open "trainANNs_single_output.m" (or "trainANN_multi_output.m" for an integrated ANN).
+  2. change variables within "User settings" section in the script as needed;
+  3. run the script.
+
+
+To test the trained ANNs on the given dataset, simply do the following:
+  1. After running training scripts, open "testANNs_single_output.m" (or "testANN_multi_output.m" for an integrated ANN).
+  2. Change variables within "User settings" section in the script as needed;
+  3. Run the script.
+
+## How to run in Python
+### Requirements
+* Python 3.6
+* Tensorflow==1.15
+* matplotlib==3.2.1
+* scipy==1.4.1
+* pandas==1.0.3
+* numpy==1.18
+
+Note: these packages are already available on Google Colab.
+
+### Usage
+Python code is intended to run on Google Colab. Please refer to colab_tutorial.pdf in this repository for more detailed instruction.

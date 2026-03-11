@@ -43,6 +43,13 @@ The repo contains jupyter notebooks and python code in two files. The starting p
 
 * Preprocessing. The [preprocessing notebook for 30cm SLR](read_calsim_and_collate_inputs_upd_dcr30cm_x2.ipynb) takes the .dss files and creates input and output csv files
 * Training and Testing. The [ANN training notebook](TF_EC_X2_training_DCR30cmSLR.ipynb) uses the csv files and builds, trains, saves and tests the neural network
+## Data Location Note
+
+Required input, output, and post-processed data for this project are available in the following shared folder:
+
+\\cnrastore-bdo\CS_dev\projects\DCR_2025_Surrogate_ANN_Training\TF_Training\Final_Results_QAQC
+
+Please refer to this location for all supporting datasets and results used in post-processing and analysis.
 
 
 
